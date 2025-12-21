@@ -1,0 +1,21 @@
+DataBase Setup
+    CREATE TABLE Pessoas (
+        Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+        Nome VARCHAR(100),
+        Idade TINYINT
+    );
+    
+    CREATE TABLE Categorias (
+        Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+        Descricao VARCHAR(100),
+        Finalidade VARCHAR(20) CHECK (Finalidade IN ('despesa', 'receita', 'despesa/receita'))
+    );
+    
+    CREATE TABLE Transacoes (
+        Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
+        Descricao VARCHAR(200),
+        Valor DECIMAL(18, 2) CHECK (Valor >= 0),
+        Tipo VARCHAR(20) CHECK (Tipo IN ('receita', 'despesa')),
+        CategoriasId UNIQUEIDENTIFIER REFERENCES Categorias(Id) ON DELETE CASCADE,
+        PessoaId UNIQUEIDENTIFIER REFERENCES Pessoas(Id) ON DELETE CASCADE
+    );
