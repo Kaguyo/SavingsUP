@@ -1,1 +1,6 @@
 *.env
+*bin/
+*obj/
+*.vs
+*.pfx, *.cer
+appsettings.Development.json

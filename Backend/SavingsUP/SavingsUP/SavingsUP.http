@@ -1,0 +1,93 @@
+@SavingsUP_HostAddress = https://localhost:7071
+
+### --- CATEGORIAS ---
+
+# 1. Criar Categoria de Alimenta��o
+# @name criarCategoria
+POST {{SavingsUP_HostAddress}}/categorias
+Content-Type: application/json
+
+{
+  "description": "Alimenta��o",
+  "purpose": "Supermercado, Restaurantes e iFood"
+}
+
+###
+
+# 2. Listar todas as categorias
+GET {{SavingsUP_HostAddress}}/categorias
+Accept: application/json
+
+### --- PESSOAS ---
+
+# 3. Criar uma pessoa adulta (Pode ter receita e despesa)
+# @name criarPessoaAdulta
+POST {{SavingsUP_HostAddress}}/pessoas
+Content-Type: application/json
+
+{
+  "name": "Mariana Souza",
+  "age": "28"
+}
+
+###
+
+# 4. Criar uma pessoa menor de idade (Apenas despesas permitido)
+# @name criarPessoaMenor
+POST {{SavingsUP_HostAddress}}/pessoas
+Content-Type: application/json
+
+{
+  "name": "Guilherme Santos",
+  "age": "15"
+}
+
+### --- TRANSA��ES ---
+
+# 5. Registrar uma Receita (Sucesso para Mariana)
+# Copie o ID da Mariana e da Categoria Alimenta��o nos campos abaixo
+POST {{SavingsUP_HostAddress}}/transacoes
+Content-Type: application/json
+
+{
+  "description": "Sal�rio Mensal",
+  "value": 4500.00,
+  "type": "receita",
+  "categoriaId": "00000000-0000-0000-0000-000000000000",
+  "pessoaId": "00000000-0000-0000-0000-000000000000"
+}
+
+###
+
+# 6. Registrar uma Despesa (Sucesso para Guilherme - Menor de idade)
+POST {{SavingsUP_HostAddress}}/transacoes
+Content-Type: application/json
+
+{
+  "description": "Lanche na Escola",
+  "value": 25.50,
+  "type": "despesa",
+  "categoriaId": "00000000-0000-0000-0000-000000000000",
+  "pessoaId": "00000000-0000-0000-0000-000000000000"
+}
+
+###
+
+# 7. TESTE DE ERRO: Receita para Menor de Idade
+# Deve retornar erro devido � regra: "Menores de idade podem registrar apenas despesas"
+POST {{SavingsUP_HostAddress}}/transacoes
+Content-Type: application/json
+
+{
+  "description": "Mesada Vov�",
+  "value": 100.00,
+  "type": "receita",
+  "categoriaId": "00000000-0000-0000-0000-000000000000",
+  "pessoaId": "ID_DO_GUILHERME_AQUI"
+}
+
+###
+
+# 8. Listar todas as transa��es
+GET {{SavingsUP_HostAddress}}/transacoes
+Accept: application/json

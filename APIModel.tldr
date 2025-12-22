@@ -313,7 +313,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 322.5,
+				"w": 320.796875,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -344,7 +344,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "PessoasIds ([]string)"
+													"text": "PessoasIds (string[])"
 												}
 											]
 										}
@@ -582,7 +582,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "Id (Guid)"
+													"text": "Id (string)"
 												}
 											]
 										}
@@ -750,7 +750,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "TotalPessoas([]                                   )"
+													"text": "TotalPessoas(                                   [])"
 												}
 											]
 										}
@@ -1239,9 +1239,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 501.76061361787583,
-			"y": -712.1181573829407,
-			"z": 0.6391659706968256,
+			"x": 169.68478714259516,
+			"y": -392.7138827366356,
+			"z": 0.4212570546987385,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -1342,7 +1342,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 549.6875,
+				"w": 557.921875,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -1373,7 +1373,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "TotalPessoas([]                                   )"
+													"text": "TotalPessoas(                                    [])"
 												}
 											]
 										}
@@ -2234,7 +2234,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 100.53125,
+				"w": 100.390625,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -2253,7 +2253,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "[]string"
+									"text": "string[]"
 								}
 							]
 						}
@@ -2435,8 +2435,8 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 744.569359159566,
-			"y": 1594.722166690393,
+			"x": 718.6821616660769,
+			"y": 1596.7134895745073,
 			"rotation": 0,
 			"isLocked": false,
 			"opacity": 1,
@@ -2669,12 +2669,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:EdBqG22grYKX2dQPWH_xn",
+			"editingShapeId": "shape:S3lz7AJP0NySPbScg9HlC",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:EdBqG22grYKX2dQPWH_xn"
+				"shape:S3lz7AJP0NySPbScg9HlC"
 			],
-			"hoveredShapeId": "shape:8ydVRaTaLOCPqYELPAKVL",
+			"hoveredShapeId": "shape:S3lz7AJP0NySPbScg9HlC",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -5452,7 +5452,7 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 740.9537220936668,
+			"x": 713.0752017160631,
 			"y": 1261.6246472914042,
 			"rotation": 0,
 			"isLocked": false,
@@ -5600,7 +5600,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "Id (Guid)"
+													"text": "Id (string)"
 												}
 											]
 										}
@@ -5945,7 +5945,7 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1702,
+				"w": 769,
 				"h": 918
 			},
 			"insets": [
@@ -6428,7 +6428,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "Valor (float:F2)"
+													"text": "Valor (decimal:F2)"
 												}
 											]
 										}
@@ -6758,7 +6758,13 @@
 							"type": "paragraph",
 							"attrs": {
 								"dir": "auto"
-							}
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "  "
+								}
+							]
 						}
 					]
 				}
@@ -6964,7 +6970,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "Id (Guid)"
+													"text": "Id (string)"
 												}
 											]
 										}
@@ -7210,7 +7216,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "Valor (float:F2)"
+													"text": "Valor (decimal:F2)"
 												}
 											]
 										}

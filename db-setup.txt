@@ -1,4 +1,4 @@
-DataBase Setup
+DataBase Tables Setup
     CREATE TABLE Pessoas (
         Id UNIQUEIDENTIFIER DEFAULT NEWID() PRIMARY KEY,
         Nome VARCHAR(100),
