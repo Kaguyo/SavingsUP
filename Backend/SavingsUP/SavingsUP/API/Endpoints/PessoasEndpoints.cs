@@ -24,7 +24,7 @@ public static class PessoasEndpoints
             {
                 return Results.Problem(ex.Message, statusCode: 500);
             }
-        });
+        }).WithTags("Pessoas");
 
         // GET ALL
         app.MapGet("/pessoas", async (IPessoaService service) =>
@@ -38,7 +38,7 @@ public static class PessoasEndpoints
             {
                 return Results.Problem(ex.Message, statusCode: 500);
             }
-        });
+        }).WithTags("Pessoas");
 
         // DELETE
         app.MapDelete("/pessoas/{id}", async (string id, IPessoaService service) =>

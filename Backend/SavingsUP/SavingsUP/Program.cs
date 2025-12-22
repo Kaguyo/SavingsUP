@@ -8,8 +8,6 @@ using SavingsUP.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// --- SERVIÇOS (DI Container) ---
-
 // 1. Injeção do DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer("name=defaultConnection"));
@@ -41,7 +39,6 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Redireciona a rota raiz para o Swagger
 app.MapGet("/", () => Results.Redirect("/swagger"));
 
 // 5. Mapeamento dos Endpoints (Minimal APIs)
