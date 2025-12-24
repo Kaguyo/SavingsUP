@@ -1,0 +1,83 @@
+.categorias-hud {
+    display: block;
+    background-color: rgb(189, 189, 189);
+    width: 99%;
+    height: 99%;
+    border-radius: 4px;
+    opacity: 1;
+}
+
+.categorias-hud-wrapper {
+    display: flex;
+    width: 100%;
+    height: 16%;
+}
+
+.categorias-hud-wrapper .categorias-form-box {
+    width: 76%;
+    height: 100%;
+    background-color: black;
+    padding-right: 2px;
+    padding-bottom: 2px;
+}
+
+.categorias-hud-wrapper .categorias-submission-box {
+    background-color: rgb(0, 0, 0);
+    width: 24%;
+    height: 100%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+.categorias-submission-box button {
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+.categorias-form-box #actions-add {
+    display: flex;
+    gap: 2px;
+    padding-left: 2px;
+}
+
+.categorias-form-box #actions-list {
+    display: flex;
+    gap: 2px;
+    padding-left: 2px;
+}
+#actions-add {
+    width: 100%;
+    height: 50%;
+}
+#actions-add #categorias-actions-transaction-select {
+    height: 97%;
+    color: gray;
+}
+
+#categorias-actions-transaction-select option {
+    color: rgb(0, 0, 0);
+}
+
+.actions-add-input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#actions-list {
+    width: 100%;
+    height: 50%;
+    padding-top: 1px;
+    
+}
+.actions-list-input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    text-align: center;
+    color: gray;
+}
+
+.actions-list-input option {
+    color: black;
+}

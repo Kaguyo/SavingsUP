@@ -1,10 +1,3 @@
-*.env
-*bin/
-*obj/
-*.vs
-*.pfx, *.cer
-appsettings.Development.json
-
 # Logs
 logs
 *.log

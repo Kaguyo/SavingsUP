@@ -1,0 +1,25 @@
+header {
+    z-index: 2;
+    display: flex;
+    background-color: black;
+    height: 10vh;
+    width: 100%;
+    align-items: center;
+}
+
+.nav-contacts {
+    color: white;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nav-contacts a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;     
+}
+

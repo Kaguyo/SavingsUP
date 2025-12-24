@@ -1,0 +1,14 @@
+.box {
+  display: block;
+  background-color: rgb(211, 211, 211);
+  height:100%;
+}
+
+.box .main-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+}
