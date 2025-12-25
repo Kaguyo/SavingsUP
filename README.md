@@ -23,7 +23,7 @@ Ajuda a visualizar **toda a solução de API de cara**, sem aprofundar no códig
 atualmente, esta aplicação depende de um banco de dados SQLServer em execução para se conectar.
 no arquivo **db-setup.txt** localizado na raiz deste mono-repositório, há o comando para criar todas as tabelas com suas
 devidas regras estruturais neste banco. Futuramente, a necessidade deste externo banco será substituída por uma migration
-e pacotes de execução de SQLServer diretamente através do .NET, executando gerando automaticamente suas configurações estruturais e execução.
+e pacotes de execução de SQLServer diretamente através do .NET, gerando automaticamente suas configurações estruturais e execução.
 
 ### Frontend: 
 em seu terminal navegue para o diretório Frontend/SavingsUP e rode
