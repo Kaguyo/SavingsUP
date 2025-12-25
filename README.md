@@ -47,5 +47,5 @@ em seu terminal o comando: **dotnet restore** este, por meio da solução existe
 a execução do projeto. Então, atualize suas configurações de conexão à Banco de dados no arquivo de configuração Backend/SavingsUP/SavingsUP/appsettings.json.
 Altere como necessário a propriedade "ConnectionStrings", para se conectar ao seu database SQLServer. Altere também as configurações de execução em:
 **Backend/SavingsUP/SavingsUP/Properties/launchSettings.json** lá você pode encontrar os **perfis de configuração e execução do servidor backend**.
-para executar algum dos perfis, execute o comando: dotnet run --launch-profile **nome do perfil** 
+para executar algum dos perfis, execute em seu terminal no diretorio Backend/SavingsUP/SavingsUP o seguinte comando: dotnet run --launch-profile **nome do perfil** 
 
