@@ -9,27 +9,27 @@ import type { TransactionData } from '../interfaces/transaction-data';
 import type { PersonData } from '../interfaces/person-data';
 import type { CategoryData } from '../interfaces/category-data';
 
-export type ActiveRow = 'pessoas' | 'categorias' | 'transacoes';
+export type ActiveColumn = 'pessoas' | 'categorias' | 'transacoes';
 
 interface MainMenuProps {
-  transactionData: TransactionData;
-  personData: PersonData;
-  categoryData: CategoryData;
+  transactionData?: TransactionData[];
+  personData?: PersonData[];
+  categoryData?: CategoryData[];
   isError: boolean,
   isLoading: boolean
 }
 
 function MainMenu(props: MainMenuProps) {
-  const components: Record<ActiveRow, () => JSX.Element> = {
+  const components: Record<ActiveColumn, () => JSX.Element> = {
     transacoes: () => <TransactionsHud isError={props.isError} isLoading={props.isLoading} transactionData={props.transactionData}/>,
     pessoas: () => <PeopleHud isError={props.isError} isLoading={props.isLoading} personData={props.personData}/>,
     categorias: () => <CategoriesHud isError={props.isError} isLoading={props.isLoading} categoryData={props.categoryData}/>,
   };
 
-  const [activeRow, setActiveRow] = useState<ActiveRow>('pessoas');
+  const [activeColumn, setActiveColumn] = useState<ActiveColumn>('pessoas');
 
-  function handleActiveRow(row: ActiveRow) {
-    setActiveRow(row);
+  function handleActiveColumn(column: ActiveColumn) {
+    setActiveColumn(column);
   }
 
   return (
@@ -37,26 +37,26 @@ function MainMenu(props: MainMenuProps) {
       <ul id="menu-list" className="no-dots">
         <li
           className="menu-item"
-          onClick={() => handleActiveRow('pessoas')}
+          onClick={() => handleActiveColumn('pessoas')}
         >
           Pessoas
         </li>
         <li
           className="menu-item"
-          onClick={() => handleActiveRow('categorias')}
+          onClick={() => handleActiveColumn('categorias')}
         >
           Categorias
         </li>
         <li
           className="menu-item"
-          onClick={() => handleActiveRow('transacoes')}
+          onClick={() => handleActiveColumn('transacoes')}
         >
           Transações
         </li>
       </ul>
 
       <div className="menu-display">
-        {components[activeRow]()}
+        {components[activeColumn]()}
       </div>
     </div>
   );

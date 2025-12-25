@@ -14,8 +14,12 @@ public class Categoria
     [MaxLength(100)]
     public required string Description { get; set; }
 
+    private string _purpose;
     [Required]
     [Column("Finalidade")]
     [MaxLength(20)]
-    public required string Purpose { get; set; }
+    public required string Purpose
+    { 
+        get => _purpose; set => _purpose = value.ToLower();
+    }
 }

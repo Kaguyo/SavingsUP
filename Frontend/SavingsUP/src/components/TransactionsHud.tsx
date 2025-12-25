@@ -1,16 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './TransactionsHud.css';
 import type { TransactionData } from '../interfaces/transaction-data'
+import { usePeopleContext } from "../contexts/PeopleContext";
+import { useCategoryContext } from "../contexts/CategoryContext";
 
 interface TransactionHudProps {
-  transactionData: TransactionData
+  transactionData?: TransactionData[]
   isLoading: boolean,
   isError: boolean
 }
 export default function TransactionsHud(props: TransactionHudProps) {
   const [value, setValue] = useState("");
   const [description, setDescription] = useState("");
-  const [listedTransactions setListedTransactions] = useState([])
+  const [transactionList, setTransactionList] = useState<TransactionData[]>([]);
+  const { peopleList } = usePeopleContext();
+  const { categoryList } = useCategoryContext();
+
+  useEffect(() => {
+      if (props.transactionData) {
+          setTransactionList(props.transactionData);
+      }
+  }, [props.transactionData]);
 
   function handleDescriptionChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.value.length > 200){
@@ -57,7 +67,6 @@ export default function TransactionsHud(props: TransactionHudProps) {
     setValue(finalValue);
 
   }
-
   
 
   if (props.isLoading) return <p>Carregando...</p>;
@@ -71,6 +80,15 @@ export default function TransactionsHud(props: TransactionHudProps) {
         <div className="transacoes-form-box">
           <div id="actions-add">
 
+            <select className="actions-add-input" id="actions-category-select">
+              <option value="" label="Categoria..."/>
+              {categoryList?.map((category, index) => (
+                <option key={"categoryOption" + index} value={category.id}>
+                  {category.description} { /* Adicionar opção de Título em dado Categoria*/}
+                </option>
+              ))}
+            </select>
+
             <select className="actions-add-input" id="actions-type-select">
               <option value="" label="Tipo..."/>
               <option value="receita">Receita</option>
@@ -79,6 +97,11 @@ export default function TransactionsHud(props: TransactionHudProps) {
 
             <select className="actions-add-input" id="actions-person-select">
               <option value="" label="Pessoa..."/>
+              {peopleList?.map((person, index) => (
+                  <option key={"personOption" + index} value={person.id}>
+                    {person.name}
+                  </option>
+                ))}
             </select>
 
             <input
@@ -113,23 +136,19 @@ export default function TransactionsHud(props: TransactionHudProps) {
         </div>
 
         <div className="transacoes-submission-box">
-          <button id="add-person-btn">Adicionar</button>
-          <button id="list-people-btn" onClick={() => {}}>Listar</button>
+          <button id="add-transaction-btn">Adicionar</button>
+          <button id="list-transaction-btn" onClick={() => {}}>Listar</button>
         </div>
 
       </div>
       <div className="content">
-        {
-          listedTransactions.map((lt: TransactionData) => 
-          <div className="transaction-item">
-            <ul className="transaction-properties">
-              <li><div>{lt.type}</div></li>
-              <li><div>{lt.categoryId}</div></li>
-              <li><div>{lt.description}</div></li>
-              <li><div>{lt.value}</div></li>
-            </ul>
-          </div>)
-        }
+        {transactionList?.map((transaction, index) => (
+          <div className="transaction-row" key={transaction.id ?? index}>
+            <span className="transaction-type">{transaction.type}</span>
+            <span className="transaction-description">{transaction.description}</span>
+            <span className="transaction-value">{transaction.value}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

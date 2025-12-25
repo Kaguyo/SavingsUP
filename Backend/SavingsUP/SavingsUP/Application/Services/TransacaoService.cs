@@ -41,7 +41,7 @@ public class TransacaoService : ITransacaoService
 
         return new TransacaoResponse
         {
-            Id = (Guid)transacaoSalva.Id!,
+            Id = (Guid)transacaoSalva.Id,
             Description = transacaoSalva.Description,
             Value = transacaoSalva.Value,
             Type = transacaoSalva.Type,
@@ -56,7 +56,7 @@ public class TransacaoService : ITransacaoService
 
         return transacoes.Select(t => new TransacaoResponse
         {
-            Id = (Guid)t.Id!,
+            Id = (Guid)t.Id,
             Description = t.Description,
             Value = t.Value,
             Type = t.Type,
@@ -72,7 +72,7 @@ public class TransacaoService : ITransacaoService
 
         return transacoes.Select(t => new TransacaoResponse
         {
-            Id = (Guid)t.Id!,
+            Id = (Guid)t.Id,
             Description = t.Description,
             Value = t.Value,
             Type = t.Type,
@@ -88,7 +88,7 @@ public class TransacaoService : ITransacaoService
 
         return transacoes.Select(t => new TransacaoResponse
         {
-            Id = (Guid)t.Id!,
+            Id = (Guid)t.Id,
             Description = t.Description,
             Value = t.Value,
             Type = t.Type,

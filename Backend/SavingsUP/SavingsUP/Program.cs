@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SavingsUP.API.Endpoints;
 using SavingsUP.Application.Interfaces;
 using SavingsUP.Application.Services;
@@ -7,6 +8,17 @@ using SavingsUP.Infrastructure.Contexts;
 using SavingsUP.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllLocalhost", policy =>
+    {
+        policy.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();   
+    });
+});
 
 // 1. Injeção do DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -37,6 +49,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowAllLocalhost");
 app.UseHttpsRedirection();
 
 app.MapGet("/", () => Results.Redirect("/swagger"));

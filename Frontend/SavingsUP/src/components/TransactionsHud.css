@@ -51,11 +51,11 @@
 }
 .actions-add-input {
     width: 100%;
-    height: 80%;
+    height: 84%;
     text-align: center;
     
 }
-#actions-type-select, #actions-person-select {
+#actions-type-select, #actions-person-select, #actions-category-select {
     height: 100%;
     background-color:white;
     padding: 0;
@@ -64,6 +64,7 @@
     border-radius: 2px;
 }
 
+#actions-category-select option,
 #actions-type-select option,
 #actions-person-select option {
   color: black;
@@ -80,4 +81,10 @@
     height: 100%;
     padding: 0;
     text-align: center;
+}
+
+.transacoes-hud .content {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
 }

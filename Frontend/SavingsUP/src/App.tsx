@@ -1,37 +1,37 @@
-import MainMenu from './components/MainMenu';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-import { useTransactionData } from './hooks/useTransactionData';
-import { useCategoryData } from './hooks/useCategoryData';
-import { usePersonData } from './hooks/usePersonData';
+import { useGetTransactionsData } from './hooks/transactions/useGetTransactionsData';
+import { useGetCategoriesData } from './hooks/categories/useGetCategoriesData';
+import { useGetPeopleData } from './hooks/people/useGetPeopleData';
+import { PeopleProvider } from "./contexts/PeopleContext";
+import { CategoryProvider } from "./contexts/CategoryContext";
 
 import './App.css';
+import MainMenu from './components/MainMenu';
 
-export const API_URL = 'http://localhost:7071';
+export const API_URL = 'https://localhost:7071';
 
 function App() {
 
   const {
     data: transactionData,
-    isLoading: isTxLoading,
     isError: txError
-  } = useTransactionData();
+  } = useGetTransactionsData();
 
   const {
     data: personData,
     isLoading: isPersonLoading,
     isError: personError
-  } = usePersonData();
+  } = useGetPeopleData();
 
   const {
     data: categoryData,
-    isLoading: isCategoryLoading,
     isError: categoryError
-  } = useCategoryData();
+  } = useGetCategoriesData();
 
-  const isLoading = isTxLoading || isPersonLoading || isCategoryLoading;
-  const isError = txError || personError || categoryError;
+  const isLoading = isPersonLoading
+  const isError = personError
 
   if (isLoading) return <p>Carregando dados...</p>;
   if (isError) return <p>Erro ao carregar dados!</p>;
@@ -41,13 +41,17 @@ function App() {
       <Header />
       <div className="box">
         <div className="main-content">
-          <MainMenu 
-            transactionData={transactionData!}
-            personData={personData!}
-            categoryData={categoryData!}
-            isError={isError}
-            isLoading={isLoading}
-          />
+          <PeopleProvider>
+          <CategoryProvider>
+            <MainMenu 
+              transactionData={transactionData}
+              personData={personData}
+              categoryData={categoryData}
+              isError={isError}
+              isLoading={isLoading}
+            />
+            </CategoryProvider>
+          </PeopleProvider>
         </div>
       </div>
       <Footer />
