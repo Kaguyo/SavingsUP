@@ -18,23 +18,20 @@ Ajuda a visualizar **toda a solução de API de cara**, sem aprofundar no códig
 
 ## 👌 Como Executar
 
-Após a instalação do projeto, para executar respectivamente Frontend e Backend:
-
-
-## Banco de dados:
+### Banco de dados:
 
 atualmente, esta aplicação depende de um banco de dados SQLServer em execução para se conectar.
 no arquivo **db-setup.txt** localizado na raiz deste mono-repositório, há o comando para criar todas as tabelas com suas
 devidas regras estruturais neste banco. Futuramente, a necessidade deste externo banco será substituída por uma migration
 e pacotes de execução de SQLServer diretamente através do .NET, executando gerando automaticamente suas configurações estruturais e execução.
 
-## Frontend: 
+### Frontend: 
 em seu terminal navegue para o diretório Frontend/SavingsUP e rode
 em seu terminal utilize de algum gerenciador de pacotes para instalar todas as dependencias do projeto, ex: npm install. 
 se necessário alteração da URL de seu backend, você pode encontra-la em App.tsx.
 Então rode com npm run dev
 
-## Backend:
+### Backend:
 
 ### Necessário .NET 8.X.X instalado
 
