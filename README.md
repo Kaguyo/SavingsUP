@@ -26,8 +26,8 @@ devidas regras estruturais neste banco. Futuramente, a necessidade deste externo
 e pacotes de execução de SQLServer diretamente através do .NET, gerando automaticamente suas configurações estruturais e execução.
 
 ### Frontend: 
-em seu terminal navegue para o diretório Frontend/SavingsUP e rode
-em seu terminal utilize de algum gerenciador de pacotes para instalar todas as dependencias do projeto, ex: npm install. 
+em seu terminal navegue para o diretório Frontend/SavingsUP e em seu terminal utilize de
+algum gerenciador de pacotes para instalar todas as dependencias do projeto, ex: npm install. 
 se necessário alteração da URL de seu backend, você pode encontra-la em App.tsx.
 Então rode com npm run dev
 
