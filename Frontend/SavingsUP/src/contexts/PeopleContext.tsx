@@ -2,17 +2,17 @@ import { createContext, useContext, useState, type ReactNode} from "react";
 import type { PersonData } from "../interfaces/person-data";
 
 interface PeopleContextData {
-  peopleList: PersonData[];
-  setPeopleList: React.Dispatch<React.SetStateAction<PersonData[]>>;
+  personList: PersonData[];
+  setPersonList: React.Dispatch<React.SetStateAction<PersonData[]>>;
 }
 
 const PeopleContext = createContext<PeopleContextData | undefined>(undefined);
 
 export function PeopleProvider({ children }: { children: ReactNode }) {
-  const [peopleList, setPeopleList] = useState<PersonData[]>([]);
+  const [personList, setPersonList] = useState<PersonData[]>([]);
 
   return (
-    <PeopleContext.Provider value={{ peopleList, setPeopleList }}>
+    <PeopleContext.Provider value={{ personList, setPersonList }}>
       {children}
     </PeopleContext.Provider>
   );

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import type { CategoryData } from '../interfaces/category-data';
 import './CategoriesHud.css'
-import { useCategoryContext } from '../contexts/CategoryContext';
+import { useCategoriesContext } from '../contexts/CategoriesContext';
 
 interface CategoriesHudProps {
     isError: boolean,
@@ -10,7 +10,7 @@ interface CategoriesHudProps {
 }
 export default function CategoriesHud(props: CategoriesHudProps){
 
-    const { categoryList, setCategoryList } = useCategoryContext();
+    const { categoryList, setCategoryList } = useCategoriesContext();
 
     useEffect(() => {
         if (props.categoryData) {

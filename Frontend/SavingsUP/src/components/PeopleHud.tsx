@@ -13,11 +13,11 @@ interface PeopleHudProps {
 }
 
 export default function PeopleHud(props: PeopleHudProps) {
-  const { peopleList, setPeopleList } = usePeopleContext();
+    const { personList, setPersonList } = usePeopleContext();
 
     useEffect(() => {
         if (props.personData) {
-        setPeopleList(props.personData);
+        setPersonList(props.personData);
         }
     }, [props.personData]);
 
@@ -30,7 +30,7 @@ export default function PeopleHud(props: PeopleHudProps) {
     useEffect(() => {
 
         if (isSuccess && createdPerson) {
-            setPeopleList(p => [...p, createdPerson]);
+            setPersonList(p => [...p, createdPerson]);
         }
     }, [isSuccess, createdPerson]);
 
@@ -89,7 +89,7 @@ export default function PeopleHud(props: PeopleHudProps) {
             </div>
 
             <div className="content">
-                {peopleList.map((person, index) => (
+                {personList.map((person, index) => (
                     <div className="person-box">
                         <div className="person-row" key={person.id ?? index}>
                             <div id="person-attribute-name" className="person-attribute">Nome: {person.name}</div>

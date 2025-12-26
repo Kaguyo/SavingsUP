@@ -12,3 +12,33 @@
   flex-direction: row;
   height: 100%;
 }
+
+#loading-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#app-loading-box,
+#app-error-box {
+  width: 40%;
+  height: 30%;
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  background-color: rgb(243, 243, 243);
+  border-radius: 8px;
+
+}
+#app-loading-box p,
+#app-error-box p {
+  margin-bottom: 50px;
+}
+#app-error-message {
+  font-size: 22px;
+}

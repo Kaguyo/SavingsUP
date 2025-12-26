@@ -3,7 +3,7 @@
 *obj/
 *.vs
 *.pfx, *.cer
-
+appsettings.Development.json
 
 # Logs
 logs
@@ -29,3 +29,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+Backend/SavingsUP/SavingsUP/appsettings.Development.json

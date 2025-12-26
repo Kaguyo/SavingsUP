@@ -6,3 +6,11 @@ export interface TransactionData {
   categoryId: string,
   personId: string
 }
+
+export interface TransactionCreateRequest {
+  description: string,
+  value: number,
+  type: 'despesa' | 'receita',
+  categoryId: string,
+  personId: string
+}

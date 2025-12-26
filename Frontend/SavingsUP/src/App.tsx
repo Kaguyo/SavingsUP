@@ -5,10 +5,11 @@ import { useGetTransactionsData } from './hooks/transactions/useGetTransactionsD
 import { useGetCategoriesData } from './hooks/categories/useGetCategoriesData';
 import { useGetPeopleData } from './hooks/people/useGetPeopleData';
 import { PeopleProvider } from "./contexts/PeopleContext";
-import { CategoryProvider } from "./contexts/CategoryContext";
+import { CategoriesProvider } from "./contexts/CategoriesContext";
 
 import './App.css';
 import MainMenu from './components/MainMenu';
+import { TransactionsProvider } from './contexts/TransactionsContext';
 
 export const API_URL = 'https://localhost:7071';
 
@@ -16,7 +17,7 @@ function App() {
 
   const {
     data: transactionData,
-    isError: txError
+    error: personErrorObj
   } = useGetTransactionsData();
 
   const {
@@ -27,14 +28,15 @@ function App() {
 
   const {
     data: categoryData,
-    isError: categoryError
   } = useGetCategoriesData();
 
   const isLoading = isPersonLoading
   const isError = personError
 
-  if (isLoading) return <p>Carregando dados...</p>;
-  if (isError) return <p>Erro ao carregar dados!</p>;
+  if (isLoading) return <><Header /><div id="loading-modal"><div id="app-loading-box"><p>Carregando dados...</p></div></div><Footer /></>;
+  
+  if (isError) return   <><Header /><div id="loading-modal"><div id="app-error-box"><p>Erro ao carregar dados!</p>
+  <p id="app-error-message">{personErrorObj?.message ?? "Erro desconhecido"}</p></div></div><Footer /></>;
 
   return (
     <>
@@ -42,7 +44,8 @@ function App() {
       <div className="box">
         <div className="main-content">
           <PeopleProvider>
-          <CategoryProvider>
+          <CategoriesProvider>
+          <TransactionsProvider>
             <MainMenu 
               transactionData={transactionData}
               personData={personData}
@@ -50,7 +53,8 @@ function App() {
               isError={isError}
               isLoading={isLoading}
             />
-            </CategoryProvider>
+          </TransactionsProvider>
+          </CategoriesProvider>
           </PeopleProvider>
         </div>
       </div>

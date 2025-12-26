@@ -1,8 +1,10 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import './TransactionsHud.css';
-import type { TransactionData } from '../interfaces/transaction-data'
+import type { TransactionCreateRequest, TransactionData } from '../interfaces/transaction-data'
 import { usePeopleContext } from "../contexts/PeopleContext";
-import { useCategoryContext } from "../contexts/CategoryContext";
+import { useCategoriesContext } from "../contexts/CategoriesContext";
+import { useTransactionsContext } from '../contexts/TransactionsContext';
+import useCreateTransaction from '../hooks/transactions/useCreateTransaction';
 
 interface TransactionHudProps {
   transactionData?: TransactionData[]
@@ -10,17 +12,20 @@ interface TransactionHudProps {
   isError: boolean
 }
 export default function TransactionsHud(props: TransactionHudProps) {
-  const [value, setValue] = useState("");
-  const [description, setDescription] = useState("");
-  const [transactionList, setTransactionList] = useState<TransactionData[]>([]);
-  const { peopleList } = usePeopleContext();
-  const { categoryList } = useCategoryContext();
+  const { transactionList, setTransactionList } = useTransactionsContext();
 
   useEffect(() => {
-      if (props.transactionData) {
-          setTransactionList(props.transactionData);
-      }
+    if (props.transactionData) {
+      setTransactionList(props.transactionData);
+    }
   }, [props.transactionData]);
+
+  const [value, setValue] = useState("");
+  const [description, setDescription] = useState("");
+  const { createTransaction, isSuccess, data: createdTransaction } = useCreateTransaction();
+  
+  const { personList } = usePeopleContext();
+  const { categoryList } = useCategoriesContext();
 
   function handleDescriptionChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.value.length > 200){
@@ -67,7 +72,28 @@ export default function TransactionsHud(props: TransactionHudProps) {
     setValue(finalValue);
 
   }
-  
+  async function handleAddTransaction() {
+    const newTransaction: TransactionCreateRequest = {
+      description: '',
+      value: 0,
+      type: 'receita',
+      categoryId: '',
+      personId: ''
+    };
+
+    try {
+      await createTransaction(newTransaction);
+    } catch (err) {
+      console.error("Erro ao criar transação", err);
+    }
+  };
+
+  useEffect(() => {
+
+    if (isSuccess && createdTransaction) {
+      setTransactionList(p => [...p, createdTransaction]);
+    }
+  }, [isSuccess, createdTransaction]);
 
   if (props.isLoading) return <p>Carregando...</p>;
 
@@ -97,7 +123,7 @@ export default function TransactionsHud(props: TransactionHudProps) {
 
             <select className="actions-add-input" id="actions-person-select">
               <option value="" label="Pessoa..."/>
-              {peopleList?.map((person, index) => (
+              {personList?.map((person, index) => (
                   <option key={"personOption" + index} value={person.id}>
                     {person.name}
                   </option>
@@ -136,7 +162,7 @@ export default function TransactionsHud(props: TransactionHudProps) {
         </div>
 
         <div className="transacoes-submission-box">
-          <button id="add-transaction-btn">Adicionar</button>
+          <button id="add-transaction-btn" onClick={handleAddTransaction}>Adicionar</button>
           <button id="list-transaction-btn" onClick={() => {}}>Listar</button>
         </div>
 
@@ -144,8 +170,10 @@ export default function TransactionsHud(props: TransactionHudProps) {
       <div className="content">
         {transactionList?.map((transaction, index) => (
           <div className="transaction-row" key={transaction.id ?? index}>
+            <span className="transaction-category">{categoryList.map(c => c.id == transaction.categoryId)}</span>
             <span className="transaction-type">{transaction.type}</span>
             <span className="transaction-description">{transaction.description}</span>
+            <span className="transaction-person">{personList.map(p => p.id == transaction.personId)}</span>
             <span className="transaction-value">{transaction.value}</span>
           </div>
         ))}
