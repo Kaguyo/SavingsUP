@@ -21,7 +21,7 @@ interface MainMenuProps {
 
 function MainMenu(props: MainMenuProps) {
   const components: Record<ActiveColumn, () => JSX.Element> = {
-    transacoes: () => <TransactionsHud isError={props.isError} isLoading={props.isLoading} transactionData={props.transactionData}/>,
+    transacoes: () => <TransactionsHud isError={props.isError} isLoading={props.isLoading} transactionData={props.transactionData} categoryData={props.categoryData}/>,
     pessoas: () => <PeopleHud isError={props.isError} isLoading={props.isLoading} personData={props.personData}/>,
     categorias: () => <CategoriesHud isError={props.isError} isLoading={props.isLoading} categoryData={props.categoryData}/>,
   };

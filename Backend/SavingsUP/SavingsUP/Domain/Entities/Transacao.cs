@@ -1,4 +1,5 @@
-﻿using SavingsUP.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using SavingsUP.Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,7 +16,8 @@ public class Transacao
 
     private decimal _value;
     [Required]
-    [Column(TypeName = "decimal(18,2)")]
+    [Precision(18, 2)]
+    [Column("Valor")]
     public required decimal Value
     {
         get => _value;

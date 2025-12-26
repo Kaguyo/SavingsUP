@@ -5,14 +5,21 @@ import { usePeopleContext } from "../contexts/PeopleContext";
 import { useCategoriesContext } from "../contexts/CategoriesContext";
 import { useTransactionsContext } from '../contexts/TransactionsContext';
 import useCreateTransaction from '../hooks/transactions/useCreateTransaction';
+import type { CategoryData } from '../interfaces/category-data';
 
 interface TransactionHudProps {
   transactionData?: TransactionData[]
+  categoryData?: CategoryData[]
   isLoading: boolean,
   isError: boolean
 }
 export default function TransactionsHud(props: TransactionHudProps) {
   const { transactionList, setTransactionList } = useTransactionsContext();
+  useEffect(() => {
+    if (props.categoryData) {
+      setCategoryList(props.categoryData);
+    }
+  }, [props.categoryData]);
 
   useEffect(() => {
     if (props.transactionData) {
@@ -25,7 +32,7 @@ export default function TransactionsHud(props: TransactionHudProps) {
   const { createTransaction, isSuccess, data: createdTransaction } = useCreateTransaction();
   
   const { personList } = usePeopleContext();
-  const { categoryList } = useCategoriesContext();
+  const { categoryList, setCategoryList } = useCategoriesContext();
 
   function handleDescriptionChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (e.target.value.length > 200){
@@ -89,7 +96,6 @@ export default function TransactionsHud(props: TransactionHudProps) {
   };
 
   useEffect(() => {
-
     if (isSuccess && createdTransaction) {
       setTransactionList(p => [...p, createdTransaction]);
     }

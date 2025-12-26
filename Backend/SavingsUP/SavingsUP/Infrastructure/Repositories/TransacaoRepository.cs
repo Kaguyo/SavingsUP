@@ -1,8 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SavingsUP.Domain.Entities;
 using SavingsUP.Domain.Interfaces;
 using SavingsUP.Infrastructure.Contexts;
-using System;
 
 namespace SavingsUP.Infrastructure.Repositories
 {

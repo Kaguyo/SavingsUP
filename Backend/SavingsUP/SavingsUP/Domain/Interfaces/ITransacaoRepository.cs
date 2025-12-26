@@ -9,6 +9,5 @@ namespace SavingsUP.Domain.Interfaces
         Task<IEnumerable<Transacao>> GetAllAsync();
         Task<IEnumerable<Transacao>> GetByCategoriesAsync(List<Guid> categoriesIds);
         Task<IEnumerable<Transacao>> GetByPeopleAsync(List<Guid> peopleIds);
-
     }
 }

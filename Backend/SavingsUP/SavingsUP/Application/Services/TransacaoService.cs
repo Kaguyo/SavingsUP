@@ -1,7 +1,7 @@
 ﻿using SavingsUP.Application.DTOs.Transacao;
 using SavingsUP.Application.Interfaces;
-using SavingsUP.Domain.Entities;
 using SavingsUP.Domain.Interfaces;
+
 
 namespace SavingsUP.Application.Services;
 
